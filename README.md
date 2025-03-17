@@ -8,3 +8,8 @@ Fungsi `handle_connection` yang dimodifikasi mengirimkan _HTTP response_ dengan 
 
 _Screenshot_ hasil menjalankan modifikasi kode terbaru:
 ![Commit 2 screen capture](./commit2.png)
+
+## Commit 3 Reflection notes
+Web server sekarang dapat membedakan request ke _root_ ("/") dan _request_ lainnya. Jika _request_-nya adalah `GET / HTTP/1.1`, server mengembalikan halaman dari file `hello.html` dengan status `200 OK`. Untuk _request_ lain, server mengembalikan halaman error dari file `404.html` dengan status `404 NOT FOUND`. Header `Content-Length` berfungsi untuk memberi tahu browser mengenai ukuran _body response_, sehingga halaman dapat ditampilkan dengan baik. _Refactor_ dilakukan dengan mengelompokkan nilai `status_line` dan `filename` ke dalam sebuah tuple melalui blok if-else. Hal ini memungkinkan proses pembacaan file dan pengiriman _response_ dilakukan dalam satu alur, sehingga kode tidak terduplikasi dan lebih mudah dipelihara.
+
+![Commit 3 screen capture](./commit3.png)
