@@ -1,0 +1,4 @@
+# Reflection Module 6 - Concurrency
+
+## Commit 1 Reflection notes
+Fungsi `handle_connection` dalam file `main.rs` bertugas untuk menampilkan _raw HTTP request_ yang dikirimkan ke server. Dalam prosesnya, fungsi ini menerima sebuah `TcpStream` yang bersifat _mutable_ dan kemudian memberikan referensinya ke dalam `BufReader`. `BufReader` membaca aliran data dengan memecah input berdasarkan karakter _newline_ atau CRLF, lalu mengembalikan setiap baris dalam bentuk `Result<String, Error>`. Setiap hasil tersebut di-_unwrapping_ dan diambil nilainya, dengan proses diiterasikan sampai ditemukan baris kosong yang menandai akhir dari bagian _header request_. Data yang diperoleh kemudian dikumpulkan dalam sebuah _vector_ `Vec<_>`, yang kemudian ditampilkan ke layar untuk menunjukkan bagaimana request tersebut disusun oleh browser.
